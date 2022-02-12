@@ -1,5 +1,6 @@
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-import { BaseEntity, Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { BaseEntity, Column, Entity, PrimaryGeneratedColumn, OneToOne, JoinColumn } from 'typeorm';
+import { User } from '.';
 
 @Entity()
 export class Registry extends BaseEntity {
@@ -25,5 +26,8 @@ export class Registry extends BaseEntity {
   @Column()
   fivCard: number;
   
+  @OneToOne(() => User)
+  @JoinColumn()
+  user: User;
 
 }
